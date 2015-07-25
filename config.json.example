@@ -1,0 +1,10 @@
+{
+	"purpose": "my-project",
+	"region": "us-west-2",
+	"subnetId": "subnet-XXXXXXXX",
+	"securityGroupIds": ["sg-XXXXXXXX", "sg-XXXXXXXX"],
+	"InstanceType": "t2.small",
+	"KeyName": "my-key-name",
+	"LoadBalancerName":"my-load-balancer",
+	"ElasticIPAllocationId":"eipalloc-XXXXXXXX",
+}
