@@ -1,0 +1,30 @@
+{
+  "name": "aws-helper-scripts",
+  "version": "0.0.1",
+  "description": "Some wrappers around the AWS SDK to speed up EC2 usage",
+  "main": "index.js",
+  "dependencies": {
+    "async": "^1.4.0",
+    "aws-sdk": "^2.1.40",
+    "lodash": "^3.10.0"
+  },
+  "private": true,
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/organisciak/aws-helper-scripts.git"
+  },
+  "keywords": [
+    "aws",
+    "ec2"
+  ],
+  "author": "Peter Organisciak",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/organisciak/aws-helper-scripts/issues"
+  },
+  "homepage": "https://github.com/organisciak/aws-helper-scripts#readme"
+}
