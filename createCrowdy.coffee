@@ -3,7 +3,7 @@ _ = require 'lodash'
 async = require 'async'
 config = require './config'
 
-ec2 = new AWS.EC2({reqion:config.region})
+ec2 = new AWS.EC2({region:config.region})
 elb = new AWS.ELB({region:config.region})
 
 main = () ->
@@ -83,7 +83,7 @@ prepNewInstance = (instance, callback) ->
         ((cb) ->
           if not config.LoadBalancerName
             console.log "No Load Balancer specified in config, skipping."
-            cb(null)
+            return cb(null)
           elb.registerInstancesWithLoadBalancer({
               Instances:[{InstanceId:instance.InstanceId}]
               LoadBalancerName:config.LoadBalancerName
@@ -93,8 +93,10 @@ prepNewInstance = (instance, callback) ->
         ),
         # Associate my preferred Elastic IP with new instance
         ((cb) ->
-          console.log "No Elastic IP Allocation Id in config, skipping."
-           ec2.associateAddress({
+          if not config.ElasticIPAllocationId
+            console.log "No Elastic IP Allocation Id in config, skipping."
+            return cb(null)
+          ec2.associateAddress({
               InstanceId:instance.InstanceId
               AllocationId:config.ElasticIPAllocationId
               # If another instance has this IP, rip it from its cold dead hands
